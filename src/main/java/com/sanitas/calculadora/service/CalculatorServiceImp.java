@@ -22,11 +22,11 @@ public class CalculatorServiceImp implements CalculatorService {
 	 */
 	@Override
 	public BigDecimal calculate(BigDecimal firstParam, BigDecimal secondParam, String operator) {
-		switch (operator) {
+		switch (operator.toLowerCase()) {
 		case "sum": {
 			return firstParam.add(secondParam);
 		}
-		case "subtraction": {
+		case "subtract": {
 			return firstParam.subtract(secondParam);
 		}
 		default:

@@ -63,7 +63,7 @@ public class CalculatorController {
 
 		log.debug("End getOperationResult");
 		tracer.trace(resultOperation);
-		return new ResponseEntity<String>("N calculate :" + resultOperation, HttpStatus.OK);
+		return new ResponseEntity<String>("Value calculate: " + resultOperation, HttpStatus.OK);
 
 	}
 
