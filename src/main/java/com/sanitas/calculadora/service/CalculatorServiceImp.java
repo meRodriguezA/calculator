@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import org.springframework.stereotype.Service;
 
+import com.sanitas.calculadora.exception.CalculatorException;
+
 /**
  * The Class CalculatorServiceImp.
  */
@@ -28,7 +30,7 @@ public class CalculatorServiceImp implements CalculatorService {
 			return firstParam.subtract(secondParam);
 		}
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + operator);
+			throw new CalculatorException("Cal_01", "Operation not allowed");
 		}
 	}
 

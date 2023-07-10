@@ -78,7 +78,7 @@ public class CalculatorController {
 	 */
 	private void validateOperations(BigDecimal firstParam, BigDecimal secondParam, String operator) {
 		// check operation are allowed
-		if (!listAllowOperationes.contains(operator)) {
+		if (!listAllowOperationes.contains(operator.toLowerCase())) {
 			log.debug("End getOperationResult KO");
 			throw new CalculatorException("Cal_01", "Operation not allowed");
 		}
