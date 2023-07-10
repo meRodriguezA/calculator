@@ -10,10 +10,10 @@ public class CalculatorServiceImp implements CalculatorService {
 	@Override
 	public BigDecimal calculate(BigDecimal firstParam, BigDecimal secondParam, String operator) {
 		switch (operator) {
-		case "suma": {
+		case "sum": {
 			return firstParam.add(secondParam);
 		}
-		case "resta": {
+		case "subtraction": {
 			return firstParam.subtract(secondParam);
 		}
 		default:
