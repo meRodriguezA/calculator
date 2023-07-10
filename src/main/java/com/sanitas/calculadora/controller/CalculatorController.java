@@ -21,24 +21,40 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The Class CalculatorController.
+ */
 @RestController
 @RequestMapping("/rest/calculator")
 @CrossOrigin
+
+/** The Constant log. */
 @Slf4j
 public class CalculatorController {
 
+	/** The list allow operationes. */
 	@Value("#{'${calculator.allow-values}'.split(',')}")
 	private List<String> listAllowOperationes;
 
+	/** The calc serv. */
 	@Autowired
 	private CalculatorService calcServ;
 
-
+	/** The tracer. */
 	private TracerImpl tracer = new TracerImpl();
 
+	/**
+	 * Gets the operation result.
+	 *
+	 * @param firstParam  the first param
+	 * @param secondParam the second param
+	 * @param operator    the operator
+	 * @return the operation result
+	 */
 	@GetMapping("/calculates")
 	public ResponseEntity<String> getOperationResult(@RequestParam @NotNull BigDecimal firstParam,
 			@RequestParam @NotNull BigDecimal secondParam, @RequestParam @NotNull @NotBlank String operator) {
+
 		log.debug("Init getOperationResult");
 		validateOperations(firstParam, secondParam, operator);
 
@@ -51,7 +67,17 @@ public class CalculatorController {
 
 	}
 
+	/**
+	 * Validate operations.
+	 * 
+	 * Must be includes in application value
+	 *
+	 * @param firstParam  the first param
+	 * @param secondParam the second param
+	 * @param operator    the operator
+	 */
 	private void validateOperations(BigDecimal firstParam, BigDecimal secondParam, String operator) {
+		// check operation are allowed
 		if (!listAllowOperationes.contains(operator)) {
 			log.debug("End getOperationResult KO");
 			throw new CalculatorException("Cal_01", "Operation not allowed");
