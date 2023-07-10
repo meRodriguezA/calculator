@@ -34,3 +34,4 @@ Implementar nuevas funcionalidades:
  - Incluir la operación en el `application.properties`, separado por una coma con respecto al valor anterior.
  - Incluir la operación en el case del `CalculatorServiceImp.java` y la funcionaldiad del mismo. (Se debe tener en ceunta si es una divisón controlar el valor cero)
  
+ 
