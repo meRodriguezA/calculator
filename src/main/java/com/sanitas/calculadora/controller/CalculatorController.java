@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sanitas.calculadora.exception.CalculatorException;
 import com.sanitas.calculadora.service.CalculatorService;
 
+import io.corp.calculator.TracerImpl;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -32,10 +33,12 @@ public class CalculatorController {
 	@Autowired
 	private CalculatorService calcServ;
 
+
+	private TracerImpl tracer = new TracerImpl();
+
 	@GetMapping("/calculates")
 	public ResponseEntity<String> getOperationResult(@RequestParam @NotNull BigDecimal firstParam,
 			@RequestParam @NotNull BigDecimal secondParam, @RequestParam @NotNull @NotBlank String operator) {
-
 		log.debug("Init getOperationResult");
 		validateOperations(firstParam, secondParam, operator);
 
@@ -43,7 +46,9 @@ public class CalculatorController {
 		BigDecimal resultOperation = calcServ.calculate(firstParam, secondParam, operator);
 
 		log.debug("End getOperationResult");
+		tracer.trace(resultOperation);
 		return new ResponseEntity<String>("N calculate :" + resultOperation, HttpStatus.OK);
+
 	}
 
 	private void validateOperations(BigDecimal firstParam, BigDecimal secondParam, String operator) {
