@@ -1,10 +1,8 @@
 package com.sanitas.calculadora.controller;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sanitas.calculadora.model.CalculatorResponse;
 import com.sanitas.calculadora.service.CalculatorService;
 
 import io.corp.calculator.TracerImpl;
@@ -48,17 +47,17 @@ public class CalculatorController {
 	 * @return the operation result
 	 */
 	@GetMapping("/calculates")
-	public ResponseEntity<String> getOperationResult(@RequestParam @NotNull BigDecimal firstParam,
+	public ResponseEntity<CalculatorResponse> getOperationResult(@RequestParam @NotNull BigDecimal firstParam,
 			@RequestParam @NotNull BigDecimal secondParam, @RequestParam @NotNull @NotBlank String operator) {
 
 		log.debug("Init getOperationResult");
 
 		log.debug("Operation allowed");
-		BigDecimal resultOperation = calcServ.calculate(firstParam, secondParam, operator);
+		CalculatorResponse resultOperation = calcServ.calculate(firstParam, secondParam, operator);
 
 		log.debug("End getOperationResult");
 		tracer.trace(resultOperation);
-		return new ResponseEntity<String>("Value calculate: " + resultOperation, HttpStatus.OK);
+		return new ResponseEntity<CalculatorResponse>( resultOperation, HttpStatus.OK);
 
 	}
 

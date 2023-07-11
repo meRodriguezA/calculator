@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sanitas.calculadora.component.Operations;
 import com.sanitas.calculadora.exception.CalculatorException;
+import com.sanitas.calculadora.model.CalculatorResponse;
 
 /**
  * The Class CalculatorServiceImp.
@@ -24,13 +25,15 @@ public class CalculatorServiceImp implements CalculatorService {
 	 */
 
 	@Override
-	public BigDecimal calculate(BigDecimal firstParam, BigDecimal secondParam, String operator) {
+	public CalculatorResponse calculate(BigDecimal firstParam, BigDecimal secondParam, String operator) {
 
 		try {
-			Class<?> clazz = Class.forName("com.sanitas.calculadora.component.OperationImp" + operator);
+			
+			Class<?> clazz = Class.forName("com.sanitas.calculadora.component.OperationImp" + operator.substring(0, 1).toUpperCase()
+		            + operator.substring(1).toLowerCase());
 			Constructor<?> ctor = clazz.getConstructor();
 			Operations object = (Operations) ctor.newInstance(new Object[] {});
-			return object.doOperation(firstParam, secondParam);
+			return new CalculatorResponse(operator.toLowerCase(), object.doOperation(firstParam, secondParam));
 		} catch (Exception ex) {
 			throw new CalculatorException("Cal_01", "Operation not allowed");
 		}
