@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sanitas.calculadora.model.CalculatorResponse;
 import com.sanitas.calculadora.service.CalculatorService;
 
-import io.corp.calculator.TracerImpl;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -34,10 +33,6 @@ public class CalculatorController {
 	@Autowired
 	private CalculatorService calcServ;
 
-	/** The tracer. */
-	@Autowired
-	private TracerImpl tracer;
-
 	/**
 	 * Gets the operation result.
 	 *
@@ -53,8 +48,6 @@ public class CalculatorController {
 		log.debug("Init getOperationResult");
 
 		CalculatorResponse resultOperation = calcServ.calculate(firstParam, secondParam, operator);
-
-		tracer.trace(resultOperation);
 
 		log.debug("End getOperationResult");
 		return new ResponseEntity<CalculatorResponse>(resultOperation, HttpStatus.OK);

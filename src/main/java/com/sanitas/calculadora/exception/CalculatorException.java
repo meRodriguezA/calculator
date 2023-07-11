@@ -4,26 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+
 /**
- * Instantiates a new calculator exception.
- *
- * @param codError the cod error
- * @param msgError the msg error
+ * The Class CalculatorException.
  */
 @AllArgsConstructor
-
-/**
- * Gets the msg error.
- *
- * @return the msg error
- */
 @Getter
-
-/**
- * Sets the msg error.
- *
- * @param msgError the new msg error
- */
 @Setter
 public class CalculatorException extends RuntimeException {
 
