@@ -32,7 +32,7 @@ public class CalculatorServiceImp implements CalculatorService {
 			Operations object = (Operations) ctor.newInstance(new Object[] {});
 			return object.doOperation(firstParam, secondParam);
 		} catch (Exception ex) {
-			throw new CalculatorException("", "");
+			throw new CalculatorException("Cal_01", "Operation not allowed");
 		}
 
 	}
