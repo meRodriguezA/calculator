@@ -6,13 +6,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sanitas.calculadora.exception.CalculatorException;
 
+import io.corp.calculator.TracerImpl;
+
 @SpringBootTest
 public class CalculatorServiceTest {
+
+	@Mock
+	private TracerImpl tracer;
 
 	@InjectMocks
 	private CalculatorServiceImp calcService;
@@ -31,7 +37,7 @@ public class CalculatorServiceTest {
 
 	@Test
 	void calculatetAllowedOperationTest() {
-		Assertions.assertEquals(BigDecimal.ONE, calcService.calculate(BigDecimal.ONE, BigDecimal.ZERO, "sum"));
-		Assertions.assertEquals(BigDecimal.ONE, calcService.calculate(BigDecimal.ONE, BigDecimal.ZERO, "subtract"));
+		Assertions.assertEquals(BigDecimal.ONE, calcService.calculate(BigDecimal.ONE, BigDecimal.ZERO, "sum").getResult());
+		Assertions.assertEquals(BigDecimal.ONE, calcService.calculate(BigDecimal.ONE, BigDecimal.ZERO, "subtract").getResult());
 	}
 }

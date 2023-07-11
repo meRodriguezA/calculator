@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * The Class OperationImpSubstract.
  */
 @Component
-public class OperationImpSubstract implements Operations {
+public class OperationImpSubtract implements Operations {
 
 	/**
 	 * Do operation.
