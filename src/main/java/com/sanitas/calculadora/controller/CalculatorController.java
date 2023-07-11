@@ -52,12 +52,12 @@ public class CalculatorController {
 
 		log.debug("Init getOperationResult");
 
-		log.debug("Operation allowed");
 		CalculatorResponse resultOperation = calcServ.calculate(firstParam, secondParam, operator);
 
-		log.debug("End getOperationResult");
 		tracer.trace(resultOperation);
-		return new ResponseEntity<CalculatorResponse>( resultOperation, HttpStatus.OK);
+
+		log.debug("End getOperationResult");
+		return new ResponseEntity<CalculatorResponse>(resultOperation, HttpStatus.OK);
 
 	}
 
