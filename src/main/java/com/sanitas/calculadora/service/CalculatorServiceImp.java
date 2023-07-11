@@ -1,9 +1,11 @@
 package com.sanitas.calculadora.service;
 
+import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 
 import org.springframework.stereotype.Service;
 
+import com.sanitas.calculadora.component.Operations;
 import com.sanitas.calculadora.exception.CalculatorException;
 
 /**
@@ -20,18 +22,18 @@ public class CalculatorServiceImp implements CalculatorService {
 	 * @param operator    the operator
 	 * @return the big decimal
 	 */
+
 	@Override
 	public BigDecimal calculate(BigDecimal firstParam, BigDecimal secondParam, String operator) {
-		switch (operator.toLowerCase()) {
-		case "sum": {
-			return firstParam.add(secondParam);
-		}
-		case "subtract": {
-			return firstParam.subtract(secondParam);
-		}
-		default:
-			throw new CalculatorException("Cal_01", "Operation not allowed");
-		}
-	}
 
+		try {
+			Class<?> clazz = Class.forName("com.sanitas.calculadora.component.OperationImp" + operator);
+			Constructor<?> ctor = clazz.getConstructor();
+			Operations object = (Operations) ctor.newInstance(new Object[] {});
+			return object.doOperation(firstParam, secondParam);
+		} catch (Exception ex) {
+			throw new CalculatorException("", "");
+		}
+
+	}
 }

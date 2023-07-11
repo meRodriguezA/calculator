@@ -56,7 +56,7 @@ public class CalculatorController {
 			@RequestParam @NotNull BigDecimal secondParam, @RequestParam @NotNull @NotBlank String operator) {
 
 		log.debug("Init getOperationResult");
-		validateOperations(firstParam, secondParam, operator);
+//		validateOperations(firstParam, secondParam, operator);
 
 		log.debug("Operation allowed");
 		BigDecimal resultOperation = calcServ.calculate(firstParam, secondParam, operator);
