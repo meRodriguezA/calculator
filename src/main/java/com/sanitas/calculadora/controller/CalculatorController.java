@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sanitas.calculadora.exception.CalculatorException;
 import com.sanitas.calculadora.service.CalculatorService;
 
 import io.corp.calculator.TracerImpl;
@@ -32,16 +31,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CalculatorController {
 
-	/** The list allow operationes. */
-	@Value("#{'${calculator.allow-values}'.split(',')}")
-	private List<String> listAllowOperationes;
-
 	/** The calc serv. */
 	@Autowired
 	private CalculatorService calcServ;
 
 	/** The tracer. */
-	private TracerImpl tracer = new TracerImpl();
+	@Autowired
+	private TracerImpl tracer;
 
 	/**
 	 * Gets the operation result.
@@ -65,7 +61,5 @@ public class CalculatorController {
 		return new ResponseEntity<String>("Value calculate: " + resultOperation, HttpStatus.OK);
 
 	}
-
-
 
 }

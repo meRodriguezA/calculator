@@ -1,5 +1,6 @@
 package com.sanitas.calculadora.exception;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -15,7 +16,8 @@ import jakarta.servlet.http.HttpServletRequest;
 public class CalculatorExceptionHandler {
 
 	/** The tracer. */
-	private TracerImpl tracer = new TracerImpl();
+	@Autowired
+	private TracerImpl tracer;
 
 	/**
 	 * Resource not found exception.
