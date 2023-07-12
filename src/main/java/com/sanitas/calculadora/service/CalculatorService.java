@@ -2,6 +2,8 @@ package com.sanitas.calculadora.service;
 
 import java.math.BigDecimal;
 
+import com.sanitas.calculadora.model.CalculatorResponse;
+
 /**
  * The Interface CalculatorService.
  */
@@ -15,6 +17,6 @@ public interface CalculatorService {
 	 * @param operator    the operator
 	 * @return the big decimal
 	 */
-	BigDecimal calculate(BigDecimal firstParam, BigDecimal secondParam, String operator);
+	CalculatorResponse calculate(BigDecimal firstParam, BigDecimal secondParam, String operator);
 
 }

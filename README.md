@@ -6,8 +6,14 @@ Calculadora con las funciones básicas de suma y resta.
 Java 17 y Maven 3.9.3
 Codigo descargado del github
 Ejecutar el comando `mvn clean install` en la carpeta raíz del proyecto
-Ejecutar el jar que se ha generado en la carpeta `/target` con el comando
- `java -jar target/calculadora-0.0.1-SNAPSHOT.jar`
+
+&nbsp;&nbsp;&nbsp; Ejecutar el jar que se ha generado en la carpeta `/target` con el comando
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`java -jar target/calculadora-0.0.1-SNAPSHOT.jar`
+
+&nbsp;&nbsp;&nbsp; Ejecutar Spring boot
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`mvn spring-boot:run`
 
 El puerto configurado es 8080, se puede cambiar antes de generar el jar en el `application.properties`
 
@@ -19,8 +25,8 @@ Los valores a introducir en el campo operations son 'sum' o 'subtract' (no case 
 
 EJEMPLOS:
 
-firstParam 1; secondParam  1; operation sum; --> Value calculate: 2
-firstParam 2; secondParam  1; operation sum; --> Value calculate: 1
+firstParam 1; secondParam  1; operation sum; 		--> {"operation": "sum", "result": 2}
+firstParam 2; secondParam  1; operation substract;  -->  {"operation": "substract", "result": 1}
 
 Si la operación introducida no puede está en la lista muestra el sigueinte error 
 {
@@ -31,7 +37,6 @@ Si la operación introducida no puede está en la lista muestra el sigueinte err
 
 ## Requisitos previos
 Implementar nuevas funcionalidades:
- - Incluir la operación en el `application.properties`, separado por una coma con respecto al valor anterior.
- - Incluir la operación en el case del `CalculatorServiceImp.java` y la funcionaldiad del mismo. (Se debe tener en ceunta si es una divisón controlar el valor cero)
- 
+ - Incluir la nueva clase siguiendo la nomenclatura de las anteriores OperationImp + "nuevafuncionalidad".
+ - Se debe tener en cuenta si es una divisón controlar el valor cero
  

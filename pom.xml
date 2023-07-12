@@ -20,7 +20,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -32,7 +31,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.iteriam</groupId>
+			<groupId>io.corp.calculator</groupId>
 			<artifactId>tracer</artifactId>
 			<version>1.0.0</version>
 		</dependency>
@@ -61,7 +60,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-install-plugin</artifactId>
 				<configuration>
-					<groupId>com.iteriam</groupId>
+					<groupId>io.corp.calculator</groupId>
 					<artifactId>tracer</artifactId>
 					<version>1.0.0</version>
 					<packaging>jar</packaging>

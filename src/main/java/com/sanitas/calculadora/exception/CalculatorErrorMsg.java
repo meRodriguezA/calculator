@@ -5,26 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Gets the request uri.
- *
- * @return the request uri
+ * The Class CalculatorErrorMsg.
  */
 @Getter
-
-/**
- * Sets the request uri.
- *
- * @param requestUri the new request uri
- */
 @Setter
-
-/**
- * Instantiates a new calculator error msg.
- *
- * @param statusCode the status code
- * @param message    the message
- * @param requestUri the request uri
- */
 @AllArgsConstructor
 public class CalculatorErrorMsg {
 
