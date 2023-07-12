@@ -39,4 +39,5 @@ Si la operación introducida no puede está en la lista muestra el sigueinte err
 Implementar nuevas funcionalidades:
  - Incluir la nueva clase siguiendo la nomenclatura de las anteriores OperationImp + "nuevafuncionalidad".
  - Se debe tener en cuenta si es una divisón controlar el valor cero
+ - Añadir en el campo example del parametro de entrada al método los posibles valores ca operación
  
