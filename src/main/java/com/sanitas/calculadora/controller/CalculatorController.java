@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sanitas.calculadora.model.CalculatorResponse;
 import com.sanitas.calculadora.service.CalculatorService;
 
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,7 @@ public class CalculatorController {
 	 */
 	@GetMapping("/calculates")
 	public ResponseEntity<CalculatorResponse> getOperationResult(@RequestParam @NotNull BigDecimal firstParam,
-			@RequestParam @NotNull BigDecimal secondParam, @RequestParam @NotNull @NotBlank String operator) {
+			@RequestParam @NotNull BigDecimal secondParam, @RequestParam @NotNull @NotBlank  @Parameter(name = "operator", description = "Operation values", example = "Sum, Subtract") String operator) {
 
 		log.debug("Init getOperationResult");
 
