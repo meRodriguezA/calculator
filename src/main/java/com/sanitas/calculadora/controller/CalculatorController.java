@@ -51,7 +51,7 @@ public class CalculatorController {
 		CalculatorResponse resultOperation = calcServ.calculate(firstParam, secondParam, operator);
 
 		log.debug("End getOperationResult");
-		return new ResponseEntity<CalculatorResponse>(resultOperation, HttpStatus.OK);
+		return new ResponseEntity<>(resultOperation, HttpStatus.OK);
 
 	}
 
